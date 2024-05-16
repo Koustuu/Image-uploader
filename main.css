@@ -1,0 +1,63 @@
+body{
+  background-color: #FBEFE3;
+}
+
+.head{
+  font-family: Danfo, Arial;
+  color: #503F37;
+  font-size: 29px;
+  text-align: center;
+}
+
+.content{
+  font-family: La Belle Aurore, Arial;
+  color: #312722;
+  font-size: 12px;
+  text-align: center;
+}
+.up{
+  font-family: Danfo, Arial;
+  color: #503F37;
+  font-size: 20px;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.upld{
+    border-radius: 50px;
+    border-color: #503F37;
+    background-color: #FBEFE3;
+    font-family: Danfo, Arial;
+    margin-left: 695px; 
+    margin-right: auto; 
+    margin-top: auto;
+    font-size:28px;
+    
+}
+.upld:hover{
+    background-color: #503F37;
+    color: #FBEFE3;
+    box-shadow: 0 0 10px rgba(20, 3, 3, 0.5);
+    cursor: pointer;
+    transition: 0.4s;
+}
+.upld:active{
+    background-color:  #FBEFE3;
+    color: #503F37;
+    cursor: pointer;
+}
+
+.image{
+  border-radius: 50px;
+  border-color: #503F37;
+  background-color: #FBEFE3; 
+  font-family: Danfo, Arial;
+  text-align: center; 
+  line-height: 150px; 
+  margin: 20px auto; 
+  margin-left: 100px; 
+  margin-right: auto;  
+  margin-bottom: 10px;
+
+}
