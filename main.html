@@ -5,33 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Danfo&family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Danfo&family=La+Belle+Aurore&family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main.css">
-    <style>
-     </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Danfo&family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Danfo&family=La+Belle+Aurore&family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    
 </head>
 <body>
+    
+    <div class="head">
+        <h1>CAPSULE</h1>
+        <img src="logo2w.png" alt="h" class="logo">   
+    </div>
+    
+    <img src="image1.jpg" alt="Description of the image" width="450" height="450" class="img1">
+    
+    <div class="text1">
+        <h1> Share your memories with your loved ones!!</h1>
+    <p>Bring your memories to life. Create a free online photo album!</p>
+    <p>Upload your favorite photos and organize them into beautiful albums.  </p>
+    <p>Share your stories with friends and family, or keep them private for your own enjoyment.</p>
+    <p>It's easy to use and completely free!</p>
+    </div>
 
-<div class="head">
-    <h1>Welcome to My Website</h1>   
-</div>
-<head>
-  
-<div class="content">
-  
-   <h1> Upload you cute lil memories here!!</h1>
-</div>
-<div>
-<h2 class="up">Upload Your Picture</h2>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-      <div class="image">
-        <input type="file" name="image" accept="image/*"> </div>
-        <div>
-        <button class="upld" name="submit">Upload</button> </div>
-    </form>
-</div>
+    <div>
+        <h2 class="up">Upload Your Picture</h2>
+        <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
+            <div class="image">
+                <label for="imageInput" class="custom-file-upload">
+                    Choose a file
+                </label>
+                <!-- Add id="imageInput" to the file input element -->
+                <input id="imageInput" type="file" name="image[]" accept="image/*" multiple onchange="previewMultipleImages(event)" class="choose">
+ 
+            
+                <!-- Move the image preview div inside the file input div -->
+                <div id="imagePreview" class="image-preview"></div>
+                
+            </div>
+            <div>
+                <button class="upld" type="submit" name="submit">Upload</button> 
+            </div>
+        </form>
+    </div>
 
+    <script>
+       function previewMultipleImages(event) {
+            var preview = document.getElementById('imagePreview');
+            preview.innerHTML = ''; // Clear previous previews
+
+            var files = event.target.files; // Access all selected files
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+        // Function to keep the uploaded image displayed
+        function displayUploadedImage() {
+            var input = document.getElementById('imageInput');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var uploadedImageArea = document.getElementById('uploadedImageArea');
+                    uploadedImageArea.innerHTML = '<img src="' + e.target.result + '">';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    
+        window.onload = displayUploadedImage;
+    </script>
+    
+    
+    <div id="uploadedImageArea" class="uploaded">
+        <!-- This is where the uploaded image will be displayed -->
+    </div>
+    
 </body>
 </html>
